@@ -6,29 +6,46 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./css/styles.css" />
         <script type="module" src="./js/scripts.js" defer></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            src="https://kit.fontawesome.com/bdfa63da9e.js"
+            crossorigin="anonymous"
+        ></script>
         <title>Morse Code Translator</title>
     </head>
-    <body>
+    <body class="bg">
         <section class="header">
-            <h1>Morse Code translator</h1>
-            <p>An app for translating between English and Morse code</p>
+            <h1 class="header__title">Morse Code translator</h1>
+            <p class="header__para">
+                An app for translating between English and Morse code
+            </p>
         </section>
         <section class="body">
             <div class="english">
                 <textarea
-                    class="english__textarea"
-                    rows=""
-                    cols="200"
+                    class="english__textarea scrollbar"
                     placeholder="Enter text here..."
                 ></textarea>
             </div>
             <div class="buttons">
-                <button>↓</button>
-                <button>Clear</button>
-                <button>↑</button>
+                <button class="buttons__button">
+                    <i
+                        class="fa-solid fa-fade fa-arrow-right"
+                        style="color: #000"
+                    ></i>
+                </button>
+                <button class="buttons__button">Clear</button>
+                <button class="buttons__button">
+                    <i class="fa-solid fa-arrow-left" style="color: #000"></i>
+                </button>
             </div>
             <div class="morse">
-                <textarea class="morse__textarea" rows="" cols="200"></textarea>
+                <textarea class="morse__textarea scrollbar"></textarea>
             </div>
         </section>
     </body>

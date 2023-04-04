@@ -1,33 +1,37 @@
-import morseDict from "./dict.js";
-
 const getKeyByValue = (object, value) => {
-    return Object.keys(object).find((key) => object[key] === value);
+    return Object.keys(object).find((key) => {
+        return object[key] === value;
+    });
 };
 
-const getCharValFromMorse = (char) => {
-    return getKeyByValue(morseDict, char);
+const getCharValFromMorse = (dict, char) => {
+    return getKeyByValue(dict, char) ? getKeyByValue(dict, char) : "?";
 };
 
-const getEnglishStringFromMorse = (word) => {
-    return word.split(" ").map(getCharValFromMorse).join("").trim();
+const getEnglishStringFromMorse = (dict, word) => {
+    return word
+        .split(" ")
+        .map((char) => getCharValFromMorse(dict, char))
+        .join("")
+        .trim();
 };
 
-export const morsetoeng = (morseString) => {
+export const morsetoeng = (dict, morseString) => {
     return morseString
         .replaceAll(/\s*\/\s*/g, "/")
         .replaceAll(/\s\s+/g, "/")
         .trim()
         .split("/")
-        .map(getEnglishStringFromMorse)
+        .map((char) => getEnglishStringFromMorse(dict, char))
         .join(" ");
 };
 
-export const engtomorse = (englishString) => {
+export const engtomorse = (dict, englishString) => {
     return englishString
-        .replaceAll(/\/+/g, "/")
+        .trim()
         .split("")
         .map((char) => {
-            return morseDict[char.toUpperCase()];
+            return dict[char.toUpperCase()] ? dict[char.toUpperCase()] : "?";
         })
         .join(" ");
 };
