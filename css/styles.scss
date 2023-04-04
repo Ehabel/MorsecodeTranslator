@@ -106,7 +106,8 @@ body {
     }
 }
 
-.english__textarea {
+.english__textarea,
+.morse__textarea {
     min-height: 150px;
     width: 800px;
     font-size: 150%;
@@ -120,8 +121,11 @@ body {
     padding: 10px;
 }
 
-.morse__textarea {
-    @extend .english__textarea;
+.english__textarea:disabled,
+.morse__textarea:disabled {
+    opacity: 1;
+    background-color: rgb(204, 204, 204);
+    color: #000;
 }
 
 .scrollbar::-webkit-scrollbar {
