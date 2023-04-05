@@ -76,7 +76,7 @@ body {
 }
 .buttons__button {
   margin-bottom: 10px;
-  font-size: 175%;
+  font-size: 1.5vw;
   background-color: white;
   border-radius: 14px;
   border-style: none;
@@ -89,14 +89,20 @@ body {
   touch-action: manipulation;
   width: 100%;
 }
+.buttons__right, .buttons__left {
+  display: block;
+}
+.buttons__up, .buttons__down {
+  display: none;
+}
 .buttons__button:hover, .buttons__button:focus {
   opacity: 0.75;
 }
 
 .english__textarea,
 .morse__textarea {
-  min-height: 150px;
-  width: 800px;
+  height: 14vh;
+  width: 35vw;
   font-size: 150%;
   resize: vertical;
   border: none;
@@ -115,6 +121,37 @@ body {
   color: #000;
 }
 
+@media only screen and (max-width: 850px) {
+  .body {
+    flex-direction: column;
+  }
+  .header {
+    padding: 15px;
+  }
+  .header__title {
+    font-size: 200%;
+    margin: 15px;
+  }
+  .header__para {
+    font-size: 90%;
+    margin: 15px;
+  }
+  .buttons__button {
+    font-size: 100%;
+  }
+  .buttons__right, .buttons__left {
+    display: none;
+  }
+  .buttons__up, .buttons__down {
+    display: block;
+  }
+  .english__textarea,
+  .morse__textarea {
+    font-size: 110%;
+    height: 10vh;
+    width: 80vw;
+  }
+}
 .scrollbar::-webkit-scrollbar {
   display: none;
 }

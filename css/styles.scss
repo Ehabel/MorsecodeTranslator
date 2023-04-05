@@ -87,7 +87,7 @@ body {
     flex-direction: column;
     &__button {
         margin-bottom: 10px;
-        font-size: 175%;
+        font-size: 1.5vw;
         background-color: white;
         border-radius: 14px;
         border-style: none;
@@ -100,6 +100,14 @@ body {
         touch-action: manipulation;
         width: 100%;
     }
+    &__right,
+    &__left {
+        display: block;
+    }
+    &__up,
+    &__down {
+        display: none;
+    }
     &__button:hover,
     &__button:focus {
         opacity: 0.75;
@@ -108,8 +116,8 @@ body {
 
 .english__textarea,
 .morse__textarea {
-    min-height: 150px;
-    width: 800px;
+    height: 14vh;
+    width: 35vw;
     font-size: 150%;
     resize: vertical;
     border: none;
@@ -126,6 +134,46 @@ body {
     opacity: 1;
     background-color: rgb(204, 204, 204);
     color: #000;
+}
+
+@media only screen and (max-width: 850px) {
+    .body {
+        flex-direction: column;
+    }
+
+    .header {
+        padding: 15px;
+        &__title {
+            font-size: 200%;
+            margin: 15px;
+        }
+
+        &__para {
+            font-size: 90%;
+            margin: 15px;
+        }
+    }
+
+    .buttons {
+        &__button {
+            font-size: 100%;
+        }
+        &__right,
+        &__left {
+            display: none;
+        }
+        &__up,
+        &__down {
+            display: block;
+        }
+    }
+
+    .english__textarea,
+    .morse__textarea {
+        font-size: 110%;
+        height: 10vh;
+        width: 80vw;
+    }
 }
 
 .scrollbar::-webkit-scrollbar {

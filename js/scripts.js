@@ -8,13 +8,21 @@ const rightArrow = document.querySelector(".fa-arrow-right");
 const clearBtn = document.querySelector(".buttons__clear");
 const leftBtn = document.querySelector(".buttons__left");
 const leftArrow = document.querySelector(".fa-arrow-left");
+const downBtn = document.querySelector(".buttons__down");
+const downArrow = document.querySelector(".fa-arrow-down");
+const upBtn = document.querySelector(".buttons__up");
+const upArrow = document.querySelector(".fa-arrow-up");
 
 englishBox.addEventListener("input", () => {
     morseBox.value = engtomorse(morseDict, englishBox.value);
 });
 
 morseBox.addEventListener("input", () => {
-    englishBox.value = morsetoeng(morseDict, morseBox.value);
+    if (morseBox.value === "") {
+        englishBox.value = "";
+    } else {
+        englishBox.value = morsetoeng(morseDict, morseBox.value);
+    }
 });
 
 rightBtn.addEventListener("click", () => {
@@ -29,6 +37,20 @@ leftBtn.addEventListener("click", () => {
     leftArrow.classList.add("fa-fade");
     englishBox.disabled = true;
     morseBox.disabled = false;
+});
+
+downBtn.addEventListener("click", () => {
+    upArrow.classList.remove("fa-fade");
+    downArrow.classList.add("fa-fade");
+    englishBox.disabled = false;
+    morseBox.disabled = true;
+});
+
+upBtn.addEventListener("click", () => {
+    downArrow.classList.remove("fa-fade");
+    upArrow.classList.add("fa-fade");
+    morseBox.disabled = false;
+    englishBox.disabled = true;
 });
 
 clearBtn.addEventListener("click", () => {

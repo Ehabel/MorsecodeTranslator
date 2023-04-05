@@ -1,26 +1,33 @@
-const getKeyByValue = (object, value) => {
-    return Object.keys(object).find((key) => {
+export const getKeyByValue = (object, value) => {
+    const foundKey = Object.keys(object).find((key) => {
         return object[key] === value;
     });
+    return foundKey ? foundKey : "?";
 };
 
-const getCharValFromMorse = (dict, char) => {
-    return getKeyByValue(dict, char) ? getKeyByValue(dict, char) : "?";
+export const getCharValFromMorse = (dict, char) => {
+    return getKeyByValue(dict, char);
 };
 
-const getEnglishStringFromMorse = (dict, word) => {
+export const getEnglishStringFromMorse = (dict, word) => {
     return word
         .split(" ")
-        .map((char) => getCharValFromMorse(dict, char))
+        .map((char) => {
+            if (word === "") return "";
+            return getCharValFromMorse(dict, char)
+                ? getCharValFromMorse(dict, char)
+                : "?";
+        })
         .join("")
         .trim();
 };
 
 export const morsetoeng = (dict, morseString) => {
     return morseString
+        .trim()
         .replaceAll(/\s*\/\s*/g, "/")
         .replaceAll(/\s\s+/g, "/")
-        .trim()
+        .replaceAll(/\/\/+/g, "/")
         .split("/")
         .map((char) => getEnglishStringFromMorse(dict, char))
         .join(" ");
