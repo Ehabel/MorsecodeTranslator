@@ -42,3 +42,10 @@ test("Get sentence of words in English from Morse", () => {
         " I?SOS S"
     );
 });
+
+test("Get Morse form English", () => {
+    expect(engtomorse(morseDict, "SOS")).toBe("... --- ...");
+    expect(engtomorse(morseDict, "SOS ME")).toBe("... --- ... / -- .");
+    expect(engtomorse(morseDict, ".....")).toBe("? ? ? ? ?");
+    expect(engtomorse(morseDict, "A       A")).toBe(".- / / / / / / / .-");
+});
